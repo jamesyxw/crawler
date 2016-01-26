@@ -64,7 +64,7 @@ NEWSPIDER_MODULE = 'appstore.spiders'
 ITEM_PIPELINES = {
    'appstore.pipelines.AppstorePipeline': 300,
 }
-DOWNLOAD_DELAY=5
+DOWNLOAD_DELAY=1
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
