@@ -1,5 +1,6 @@
 # Crawler
-This is the project that I started based on the micro project held by TigerBit.io
+This is the project that I started based on the micro project held by TigerBit.io. 
+
 The goal of this project is to build a web crawler that can crawl at a speed of 100 pages/sec
 
 The detail information of the project can be found on their website: 
@@ -27,7 +28,7 @@ http://bittiger.io/
     ├── appstore.dat
     └── scrapy.cfg
 
-#Key Files and their functions: 
+#Key Files
     - items.py: define the type of data to be collected from a specific web crawler. 
       In this case, I am creating a web crawler for huawei appstore. So the
       fields that I define are:
