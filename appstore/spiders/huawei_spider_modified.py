@@ -31,9 +31,18 @@ class HuaweiSpider(scrapy.Spider):
 
         url = response.url
 
+        # while url:
+        #     yield scrapy.Request(url, callback=self.parse_page)
+        #     url = self.find_next_page(url)  
+
         while url:
-            yield scrapy.Request(url, callback=self.parse_page)
-            url = self.find_next_page(url)  
+            yield scrapy.Request(url, self.parse_page, meta={
+                'splash': {
+                    'endpoint': "render.html",
+                    'args': {'wait': 0.5}
+                }
+            })
+            url = self.find_next_page(url) 
 
     #Parse the current page, go to the main page of each app on the current page
     def parse_page(self, response):

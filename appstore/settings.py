@@ -61,7 +61,7 @@ RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware' : None,
     'appstore.random_useragent.RandomUserAgentMiddleware' : 400,
-    'appstore.random_proxy.RandomProxy' : 100,
+    'appstore.random_proxy.RandomProxy' : 100
 
 }
 

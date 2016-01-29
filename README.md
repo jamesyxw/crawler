@@ -14,8 +14,13 @@ http://bittiger.io/
     │   ├── __init__.pyc
     │   ├── items.py
     │   ├── items.pyc
+    │   ├── list.txt
     │   ├── pipelines.py
     │   ├── pipelines.pyc
+    │   ├── random_proxy.py
+    │   ├── random_proxy.pyc
+    │   ├── random_useragent.py
+    │   ├── random_useragent.pyc
     │   ├── settings.py
     │   ├── settings.pyc
     │   └── spiders
@@ -47,3 +52,6 @@ http://bittiger.io/
 - huawei spider v2.0: defined as in huawei_spider_modified.py.
     This crawler not only crawl the page at: http://appstore.huawei.com/more/all.
     It also go to the page of each app listed there and scrape the info of the recommended apps as well
+
+#Random Proxy and User Agent
+- When increase the speed of crawling, the risk of being detected as crawling also increases. Therefore, we need to use random user agent and proxy to go around this problem. 

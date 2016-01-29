@@ -27,6 +27,7 @@ from scrapy import log
 class RandomProxy(object):
     def __init__(self, settings):
         self.proxy_list = settings.get('PROXY_LIST')
+        #get the directory location of the list.txt file
         __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
         fin = open(os.path.join(__location__, self.proxy_list))
 
