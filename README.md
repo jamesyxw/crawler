@@ -46,10 +46,10 @@ http://bittiger.io/
     - settings.py: define the item pipe for the huawei web crawler, its priority and delay between each crawling request. 
 
 #The Crawlers
-- huawei spider: defined as in huawei_spider.py. 
+- huawei_spider 
     This crawler crawl the page at: http://appstore.huawei.com/more/all
     It scrape all the apps on this page based on the items type defined in the items.py file
-- huawei spider v2.0: defined as in huawei_spider_modified.py.
+- huawei_spider_modified
     This crawler not only crawl the page at: http://appstore.huawei.com/more/all.
     It also go to the page of each app listed there and scrape the info of the recommended apps as well
 
