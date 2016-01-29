@@ -49,8 +49,20 @@ NEWSPIDER_MODULE = 'appstore.spiders'
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
+# DOWNLOADER_MIDDLEWARES = {
+#    'scrapyjs.SplashMiddleware': 725,
+# }
+
+# Retry many times since proxies often fail
+RETRY_TIMES = 10
+# Retry on most error codes since proxies fail for different reasons
+RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
+
 DOWNLOADER_MIDDLEWARES = {
-   'scrapyjs.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware' : None,
+    'appstore.random_useragent.RandomUserAgentMiddleware' : 400,
+    'appstore.random_proxy.RandomProxy' : 100,
+
 }
 
 SPLASH_URL = 'http://192.168.59.103:8050/'
@@ -68,7 +80,9 @@ HTTPCACHE_STORAGE = 'scrapyjs.SplashAwareFSCacheStorage'
 ITEM_PIPELINES = {
    'appstore.pipelines.AppstorePipeline': 300,
 }
-DOWNLOAD_DELAY=1
+DOWNLOAD_DELAY=0.5
+
+PROXY_LIST = 'list.txt'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

@@ -16,7 +16,7 @@ class HuaweiSpider(scrapy.Spider):
             page_num_str = url.split('/')[-1]
             page_num = int(page_num_str)+1
             #Limit the number of pages crawl for testing
-            if page_num > 2:
+            if page_num > 1:
                 return None
 
             url = url[:-len(page_num_str)] + str(page_num)
@@ -35,7 +35,7 @@ class HuaweiSpider(scrapy.Spider):
             yield scrapy.Request(url, callback=self.parse_page)
             url = self.find_next_page(url)  
 
-
+    #Parse the current page, go to the main page of each app on the current page
     def parse_page(self, response):
         page = Selector(response)
 
@@ -46,24 +46,18 @@ class HuaweiSpider(scrapy.Spider):
             url = href.extract()
             yield scrapy.Request(url, callback=self.parse_item)   
 
-    # def find_last_page(self, response):
-    #     page = Selector(response)
-
-    #     div = page.xpath('//div[@id="recommendListPage"]')
-
-    #     return page.xpath('')
-
-
     def parse_item(self, response):
         page = Selector(response)
         item = AppstoreItem()
 
+        #Get the item info
         item['title'] = page.xpath('//ul[@class="app-info-ul nofloat"]/li/p/span[@class="title"]/text()') \
             .extract_first().encode('utf-8')
         item['url'] = response.url
         item['appid'] = re.match(r'http://.*/(.*)', item['url']).group(1)
         item['intro'] = page.xpath('//meta[@name="description"]/@content') \
             .extract_first().encode('utf-8')
+        item['thumbnail_url'] = page.xpath('//ul[@class="app-info-ul nofloat"]/li[@class="img"]/img[@class="app-ico"]/@lazyload').extract_first();
 
         #Collect the recommended app for the current item
         divs = page.xpath('//div[@class="open-info"]')
