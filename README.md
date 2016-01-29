@@ -3,7 +3,7 @@ This is the project that I started based on the micro project held by TigerBit.i
 
 The goal of this project is to build a web crawler that can crawl at a speed of 100 pages/sec
 
-The detail information of the project can be found on their website: 
+The detail information of the project can be found on the website: 
 http://bittiger.io/
 
 #Project Structure
