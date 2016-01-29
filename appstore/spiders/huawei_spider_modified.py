@@ -16,7 +16,7 @@ class HuaweiSpider(scrapy.Spider):
             page_num_str = url.split('/')[-1]
             page_num = int(page_num_str)+1
             #Limit the number of pages crawl for testing
-            if page_num > 1:
+            if page_num > 41:
                 return None
 
             url = url[:-len(page_num_str)] + str(page_num)
@@ -39,7 +39,7 @@ class HuaweiSpider(scrapy.Spider):
             yield scrapy.Request(url, self.parse_page, meta={
                 'splash': {
                     'endpoint': "render.html",
-                    'args': {'wait': 0.5}
+                    'args': {'wait': 0.1}
                 }
             })
             url = self.find_next_page(url) 

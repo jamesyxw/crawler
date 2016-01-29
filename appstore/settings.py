@@ -80,7 +80,7 @@ HTTPCACHE_STORAGE = 'scrapyjs.SplashAwareFSCacheStorage'
 ITEM_PIPELINES = {
    'appstore.pipelines.AppstorePipeline': 300,
 }
-DOWNLOAD_DELAY=0.5
+DOWNLOAD_DELAY=0.1
 
 PROXY_LIST = 'list.txt'
 
